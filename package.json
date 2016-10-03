@@ -1,0 +1,23 @@
+{
+  "name": "mytask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "csvjson": "^2.2.0",
+    "csvtojson": "^1.0.2",
+    "multer": "^1.2.0",
+    "mongojs": "^2.4.0",
+    "grunt": "^1.0.1",
+    "ng-file-upload": "^12.2.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

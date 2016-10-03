@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head ng-app="myApp">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+	<title> Add File</title>
+	</head>
+	<body ng-controller= "AppCntl">
+		<div class="container">
+		<h1> Upload new data </h1>
+		<form name="/upload" method="post" enctype="multipart/form-data">
+			<input  type="file" id="file" name="file">
+			<button class="btn btn-primary" > Submit</button>
+		</form>
+	</div>
+	<script src="angular.min.js"></script>
+	<script src="controllers/controller.js"></script>
+	
+</body>
+</html>
