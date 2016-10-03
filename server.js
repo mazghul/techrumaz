@@ -159,5 +159,7 @@ fs.createReadStream(target_path).pipe(converter);
         });*/
 	//res.send(req.files);	*/
 });
-app.listen(3000);
+var server = app.listen((process.env.PORT || 3000) , function(){
+	console.log("server running");
+}
 console.log("Server Running on port 3000")
