@@ -37,7 +37,7 @@
 		 			<td><input class="form-control" ng-model="contact.Domain"></td>
 		 			<td><input class="form-control" ng-model="contact.Percentile"></td>
 		 			<td><input class="form-control" ng-model="contact.FirstName"></td>
-		 			<td><input class="form-control" ng-model="contact.LastnameInitial"></td>
+		 			<td><input class="form-control" ng-model="contact.lastnameInitial"></td>
 		 			<td><button class="btn btn-primary" ng-click="addContact()"> Add Contact</button></td>
 		 		</tr>
 		 		<tr ng-repeat="contact in contactlist | orderBy : '-Percentile'">
@@ -46,7 +46,7 @@
 		 			<td>{{contact.Domain}}</td>
 		 			<td>{{contact.Percentile}}</td>
 		 			<td>{{contact.FirstName}}</td>
-		 			<td>{{contact.LastNameInitial}}</td>
+		 			<td>{{contact.lastNameInitial}}</td>
 		 			<td><button class="btn btn-danger" ng-click="remove(contact._id)"> Remove</button></td>
 		 		</tr>
 		 	</tbody> 
