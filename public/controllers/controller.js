@@ -18,13 +18,13 @@ refresh();
 $scope.addContact = function() {
 	console.log($scope.contact);
 	$http.post('/mytask',$scope.contact).success(function(response){
-		//console.log(response);
+		console.log(response);
 		refresh();
 	});
 };
 
 $scope.remove = function(id) {
-	//console.log(id);
+	console.log(id);
 	$http.delete('/mytask/' + id).success(function(response){
 		refresh();
 	});

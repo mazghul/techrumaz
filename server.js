@@ -1,7 +1,9 @@
 var express = require('express');
 var app = express();
-var mongojs = require('mongojs');
-var db = mongojs('mytask',['marklist']);
+//var mongojs = require('mongojs');
+//var db = mongojs('mytask',['marklist']);
+
+var mLab = require('mongolab-data-api')('ff6vl0JOX9RkcjG38JqRKx5uIk6WUfWx');
 
 var bodyParser =require('body-parser');
 var fs  = require('fs');
@@ -19,14 +21,22 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 app.get('/mytask', function (req, res){
-	//console.log("I receive a GET request")
+	console.log("I receive a GET request")
 
-	db.marklist.find().sort({Percentile : -1}, function (err, docs){
+	/*db.marklist.find().sort({Percentile : -1}, function (err, docs){
 		//console.log(docs);
 		res.json(docs);
-	});
-
 	
+});*/
+	var options = {
+  database: 'maz',
+  collectionName: 'mark'
+  //query: '{ "key": "value" }'
+};
+	mLab.listDocuments(options,function (err, data) {
+  //console.log(data); //=> [ { _id: 1234, ...  } ]
+  res.json(data); 
+});
 
 
 /*person1= {
@@ -50,25 +60,54 @@ app.get('/mytask', function (req, res){
 	var contactlist = [person1, person2, person3];
 	res.json(contactlist);*/
 });
+//listdb
+mLab.listDatabases(function (err, data) {
+    if (err) { console.log(err); }
+    else {
+        console.log(data); // => [db1, db2, db3, ...] 
+    }
+});
 
-
-app.post('/mytask',function(req, res){
-	console.log(req.body);
-	db.marklist.insert(req.body, function(err, doc){
-		res.json(doc);
-	});
-		});
-
-app.delete('/mytask/:id', function (req, res){
-	var id = req.params.id;
-	console.log(id);
-	db.marklist.remove({_id:mongojs.ObjectId(id)}, function (err, doc){
-		res.json(doc);
-	})
+//list collections
+mLab.listCollections('maz', function (err, collections) {
+  console.log(collections); // => [coll1, coll2, ...] 
 });
 
 
-	
+app.post('/mytask',function(req, res){
+	//console.log(req.body);
+	/*db.marklist.insert(req.body, function(err, doc){
+		res.json(doc);
+	});*/
+
+	var options = {
+  database: 'maz',
+  collectionName: 'mark',
+  documents: req.body
+};
+	mLab.insertDocuments(options, function (req, res) {	
+  console.log(res); 
+		});
+});
+
+//***************************************** DELETION*****************************************
+app.delete('/mytask/:id', function (req, res){
+	var id = req.params.id;
+	console.log(id);
+	/*db.marklist.remove({_id:mongojs.ObjectId(id)}, function (err, doc){
+		res.json(doc);
+	})*/
+
+	var options = {
+  database: 'maz',
+  collectionName: 'mark',
+  id: ObjectId(id)
+};
+	mLab.deleteDocument(options);
+});
+
+
+//*************************************** upload **********************************************
 	app.post('/fileUpload', upload.single('test'), function(req, res,next) {
 		console.log("get req");
 		console.log(req.file);
@@ -94,10 +133,23 @@ var csvjsonre=csvjson.toObject(data);
   	//console.log(data);
 
  console.log(csvjsonre);
- db.marklist.insert(csvjsonre, function(err, doc){
+ /*db.marklist.insert(csvjsonre, function(err, doc){
 		res.json(doc);
 		console.log('complete');
-	});
+	});*/
+
+  var options = {
+  database: 'maz',
+  collectionName: 'mark',
+  documents: csvjsonre
+};
+	mLab.insertDocuments(options, function (req, res) {	
+  console.log(res); 
+
+		console.log('complete');
+
+		});
+
  //console.log(typeof(json));
  //console.log(typeof(csvjsonre));
  //console.log(Object.keys(csvjsonre)); 
@@ -159,7 +211,9 @@ fs.createReadStream(target_path).pipe(converter);
         });*/
 	//res.send(req.files);	*/
 });
+//app.listen(3000);
+//console.log("Server Running on port 3000")
+
 var server = app.listen((process.env.PORT || 3000) , function(){
 	console.log("server running");
-}
-console.log("Server Running on port 3000")
+})
