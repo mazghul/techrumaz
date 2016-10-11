@@ -25,7 +25,7 @@ $scope.addContact = function() {
 
 $scope.remove = function(id) {
 	console.log(id);
-	$http.delete('/mytask/' + id).success(function(response){
+	$http.delete('/mytask/' + id.$oid).success(function(response){
 		refresh();
 	});
 };
