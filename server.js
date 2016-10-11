@@ -85,8 +85,8 @@ app.post('/mytask',function(req, res){
   collectionName: 'mark',
   documents: req.body
 };
-	mLab.insertDocuments(options, function (req, res) {	
-  console.log(res); 
+	mLab.insertDocuments(options, function(err, doc){
+    res.json(doc);
 		});
 });
 
@@ -103,8 +103,8 @@ app.delete('/mytask/:id', function (req, res){
   collectionName: 'mark',
   id: id
 };
-	mLab.deleteDocument(options, function (req, res) {  
-  //console.log(res); 
+	mLab.deleteDocument(options,  function (err, doc){
+    res.json(doc);
     });
 });
 
