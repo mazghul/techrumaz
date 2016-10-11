@@ -93,7 +93,7 @@ app.post('/mytask',function(req, res){
 //***************************************** DELETION*****************************************
 app.delete('/mytask/:id', function (req, res){
 	var id = req.params.id;
-	console.log(id);
+	//console.log(id);
 	/*db.marklist.remove({_id:mongojs.ObjectId(id)}, function (err, doc){
 		res.json(doc);
 	})*/
@@ -103,8 +103,8 @@ app.delete('/mytask/:id', function (req, res){
   collectionName: 'mark',
   id: id
 };
-	mLab.deleteDocument(options function (req, res) {  
-  console.log(res); 
+	mLab.deleteDocument(options, function (req, res) {  
+  //console.log(res); 
     });
 });
 
