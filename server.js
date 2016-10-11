@@ -103,7 +103,9 @@ app.delete('/mytask/:id', function (req, res){
   collectionName: 'mark',
   id: ObjectId(id)
 };
-	mLab.deleteDocument(options);
+	mLab.deleteDocument(options function (req, res) {  
+  console.log(res); 
+    });
 });
 
 
