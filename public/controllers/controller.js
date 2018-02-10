@@ -2,7 +2,7 @@ var myApp = angular.module('myApp',[]);
 myApp.controller('AppCntl',['$scope','$http',
 	function ($scope,$http){
 
-	//console.log(" Hello World from controller");
+//console.log(" Hello World from controller");
 var refresh =function(){
 $http.get('/mytask').success(function(response) {
 	//console.log("I got the data I requested");
@@ -32,7 +32,7 @@ $scope.remove = function(id) {
 
 
 
-
+//Sample JSON data.
 
 	/*person1= {
 		name: 'Maz',

@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-//var mongojs = require('mongojs');
+//var mongojs = require('mongojs'); //When using local MongoDB
 //var db = mongojs('mytask',['marklist']);
 
 var mLab = require('mongolab-data-api')('ff6vl0JOX9RkcjG38JqRKx5uIk6WUfWx');
@@ -64,13 +64,13 @@ app.get('/mytask', function (req, res){
 mLab.listDatabases(function (err, data) {
     if (err) { console.log(err); }
     else {
-        console.log(data); // => [db1, db2, db3, ...] 
+        console.log("database",data); // => [db1, db2, db3, ...] 
     }
 });
 
 //list collections
 mLab.listCollections('maz', function (err, collections) {
-  console.log(collections); // => [coll1, coll2, ...] 
+  console.log("collections",collections); // => [coll1, coll2, ...] 
 });
 
 
@@ -111,8 +111,8 @@ app.delete('/mytask/:id', function (req, res){
 
 //*************************************** upload **********************************************
 	app.post('/fileUpload', upload.single('test'), function(req, res,next) {
-		console.log("get req");
-		console.log(req.file);
+		//console.log("get req");
+		console.log("request file",req.file);
 		var tmp_path = req.file.path;
 
   /** The original name of the uploaded file
@@ -128,7 +128,7 @@ app.delete('/mytask/:id', function (req, res){
  var data = fs.readFileSync(target_path, { encoding : 'utf8'});
  
  //var options = { delimiter : ','};
-var csvjsonre=csvjson.toObject(data);
+var csvjsonre=csvjson.toObject(data); //Convert CSV to JSON
 //console.log(target_path);
 
   	
