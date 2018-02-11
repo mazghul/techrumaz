@@ -88,23 +88,16 @@ app.delete('/mytask/:id', function (req, res){
     });
 });
 
-app.get('/fileUpload', function (req, res){
+/* app.get('/fileUpload', function (req, res){
 	console.log("I receive a GET request")
-
-	/*db.marklist.find().sort({Percentile : -1}, function (err, docs){
-		//console.log(docs);
-		res.json(docs);
-	
-});*/
 	var options = {
   database: 'maz',
   collectionName: 'mark'
-  //query: '{ "key": "value" }'
 };
 
 res.redirect('/mytask');
 	
-});
+}); */
 
 //*************************************** UPLOAD **********************************************
 	app.post('/fileUpload', upload.single('test'), function(req, res,next) {
