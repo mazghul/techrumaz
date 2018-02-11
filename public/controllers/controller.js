@@ -29,9 +29,6 @@ $scope.remove = function(id) {
 		refresh();
 	});
 };
-
-
-
 //Sample JSON data.
 
 	/*person1= {
@@ -55,4 +52,3 @@ $scope.remove = function(id) {
 	var contactlist = [person1, person2, person3];
 	$scope.contactlist = contactlist; */
 }]);
-

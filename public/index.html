@@ -2,6 +2,7 @@
 <html ng-app="myApp"> 
 <head>
 
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="custom.css">
@@ -15,13 +16,14 @@
 		<h1>These Are the employees of Techruiters</h1>
 		<h4>Upload a file in .csv format </h4>
 		 <form action="/fileUpload" method="post" enctype="multipart/form-data">
-		 	<input  type="file" name="test" ng-model="fileupload" name="file" required>
+		 	<input class="inline-file" type="file" name="test" ng-model="fileupload" name="file" required>
  			<input type="submit" class="btn btn-primary" ></button>
 		 </form>
 		 <table class="table">
 		 	<thead>
 		 		<tr>
-		 			<th>S.No.</th>
+					<th>Primary Key</th>
+		 			<th class="table-Sno">S.No.</th>
 		 			<th>Tecruitr ID</th>
 		 			<th>Domain</th>
 		 			<th>Percentile</th>
@@ -33,8 +35,8 @@
 			
 		 	<tbody>
 		 			<tr>
+						 <td></td>
 						 <td><input class="form-control" ng-model="contact.SNo" required></td>
-
 		 				<td><input class="form-control" ng-model="contact.TecruitrID"></td>
 		 				<td><input class="form-control" ng-model="contact.Domain"></td>
 		 				<td><input class="form-control" ng-model="contact.Percentile"></td>
@@ -43,6 +45,7 @@
 		 				<td><button type="submit" class="btn btn-primary" ng-click="addContact()"> Add </button></td>
 					 </tr>
 		 			<tr ng-repeat="contact in contactlist | orderBy : '-Percentile'">
+						<td>{{contact._id.$oid}}</td>
 		 				<td>{{contact.SNo}}</td>
 						<td>{{contact.TecruitrID}}</td>
 						<td>{{contact.Domain}}</td>
@@ -54,6 +57,10 @@
 			 </tbody> 
 			
 		 </table>
+
+		 <div ng-repeat="contact in contactlist | orderBy : '-Percentile'">
+			 {{contact}}
+		 </div>
 
 	</div>
 

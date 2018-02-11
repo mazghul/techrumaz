@@ -169,7 +169,6 @@ var csvjsonre=csvjson.toObject(data); //Convert CSV to JSON
    // app.use(express.static(__dirname + "/public/add.html"));
     //window.location = "https://www.mazghul.tk";
    // res.json(docs.n+" documents inserted succesfully");
-   res.redirect('/');
 
 		});
 
