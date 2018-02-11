@@ -102,7 +102,7 @@ app.get('/fileUpload', function (req, res){
   //query: '{ "key": "value" }'
 };
 
-res.redirect('/');
+res.redirect('/mytask');
 	
 });
 
