@@ -108,6 +108,23 @@ app.delete('/mytask/:id', function (req, res){
     });
 });
 
+app.get('/fileUpload', function (req, res){
+	console.log("I receive a GET request")
+
+	/*db.marklist.find().sort({Percentile : -1}, function (err, docs){
+		//console.log(docs);
+		res.json(docs);
+	
+});*/
+	var options = {
+  database: 'maz',
+  collectionName: 'mark'
+  //query: '{ "key": "value" }'
+};
+
+res.redirect('/');
+	
+});
 
 //*************************************** upload **********************************************
 	app.post('/fileUpload', upload.single('test'), function(req, res,next) {
@@ -145,10 +162,14 @@ var csvjsonre=csvjson.toObject(data); //Convert CSV to JSON
   collectionName: 'mark',
   documents: csvjsonre
 };
-	mLab.insertDocuments(options, function (req, res) {	
-  console.log(res); 
+	mLab.insertDocuments(options, function (err, docs) {	
+    console.log(docs); 
 
-		console.log('complete');
+    console.log('complete');
+   // app.use(express.static(__dirname + "/public/add.html"));
+    //window.location = "https://www.mazghul.tk";
+   // res.json(docs.n+" documents inserted succesfully");
+   res.redirect('/');
 
 		});
 
