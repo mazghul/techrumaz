@@ -29,26 +29,4 @@ $scope.remove = function(id) {
 		refresh();
 	});
 };
-//Sample JSON data.
-
-	/*person1= {
-		name: 'Maz',
-		Email:'mazghul@gmail.com',
-		Mobileno: '9751009574'
-	};
-
-	person2= {
-		name: 'ghul',
-		Email: 'ghulasan@gmail.com',
-		Mobileno: '0562485760'
-	};
-
-	person3= {
-		name: 'Saff',
-		Email: 'saffghul@gmail.com',
-		Mobileno: '8681918519'
-	};
-
-	var contactlist = [person1, person2, person3];
-	$scope.contactlist = contactlist; */
 }]);
