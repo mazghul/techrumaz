@@ -134,7 +134,9 @@ var csvjsonre=csvjson.toObject(data); //Convert CSV to JSON
 };
 	mLab.insertDocuments(options, function (err, docs) {	
     console.log("complete",docs); 
-    res.json(docs.n+" documents inserted succesfully");
+    res.redirect('/');
+    //res.json(docs.n+" documents inserted succesfully");
+    
 		});
 });
   src.on('error', function(err) { console.log('error'); });
